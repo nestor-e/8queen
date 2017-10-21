@@ -1,0 +1,12 @@
+Starting puzzle of size 8 using Roulette Selector and 200 individuals per generation
+1 Crossovers, Mutation Chances : move - 5.0 % , swap - 5.0 % ; 4 max distance
+	Gen #1: Best - 4 , Avg - 15.67 , Worst - 34
+	Gen #2: Best - 4 , Avg - 14.38 , Worst - 16
+	Gen #3: Best - 4 , Avg - 14.18 , Worst - 12
+	Gen #4: Best - 4 , Avg - 14.09 , Worst - 22
+	Gen #5: Best - 2 , Avg - 13.79 , Worst - 14
+	Gen #6: Best - 2 , Avg - 13.56 , Worst - 20
+	Gen #7: Best - 2 , Avg - 13.41 , Worst - 6
+	Gen #8: Best - 2 , Avg - 12.91 , Worst - 4
+	Gen #9: Best - 2 , Avg - 11.72 , Worst - 14
+	Gen #10: Best - 0 , Avg - 10.66 , Worst - 6
