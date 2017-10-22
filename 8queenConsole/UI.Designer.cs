@@ -30,7 +30,7 @@
 		{
 			System.Windows.Forms.Label staticTextMDistance;
 			System.Windows.Forms.Label staticTextMChanceSwap;
-			System.Windows.Forms.Label staticTextMChanceMove;
+			System.Windows.Forms.Label staticTextMChanceShift;
 			System.Windows.Forms.Label staticTextCrossover;
 			System.Windows.Forms.Label staticTextBoardSize;
 			System.Windows.Forms.Label staticTextPopSize;
@@ -40,17 +40,19 @@
 			System.Windows.Forms.Label staticTextGen;
 			System.Windows.Forms.Label staticTextBest;
 			System.Windows.Forms.Label staticTextSpeed;
+			System.Windows.Forms.Label staticTextMChanceRev;
 			this.logEnabledConsole = new System.Windows.Forms.CheckBox();
 			this.logEnabledFile = new System.Windows.Forms.CheckBox();
 			this.buttonStart = new System.Windows.Forms.Button();
 			this.mDistanceSelector = new System.Windows.Forms.NumericUpDown();
-			this.mChanceMoveSelector = new System.Windows.Forms.NumericUpDown();
+			this.mChanceShiftSelector = new System.Windows.Forms.NumericUpDown();
 			this.mChanceSwapSelector = new System.Windows.Forms.NumericUpDown();
 			this.selectRoullete = new System.Windows.Forms.RadioButton();
 			this.selectDemo = new System.Windows.Forms.RadioButton();
 			this.crossoverSelector = new System.Windows.Forms.NumericUpDown();
 			this.groupBoxMutation = new System.Windows.Forms.GroupBox();
 			this.groupBoxSelection = new System.Windows.Forms.GroupBox();
+			this.selectSteady = new System.Windows.Forms.RadioButton();
 			this.LoggingBox = new System.Windows.Forms.GroupBox();
 			this.groupBoxPop = new System.Windows.Forms.GroupBox();
 			this.popSizeSelector = new System.Windows.Forms.NumericUpDown();
@@ -63,11 +65,11 @@
 			this.textGenBest = new System.Windows.Forms.Label();
 			this.speedSelector = new System.Windows.Forms.TrackBar();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.selectSteady = new System.Windows.Forms.RadioButton();
 			this.chessBoard = new _8queen.ChessBoard();
+			this.mChanceRevSelector = new System.Windows.Forms.NumericUpDown();
 			staticTextMDistance = new System.Windows.Forms.Label();
 			staticTextMChanceSwap = new System.Windows.Forms.Label();
-			staticTextMChanceMove = new System.Windows.Forms.Label();
+			staticTextMChanceShift = new System.Windows.Forms.Label();
 			staticTextCrossover = new System.Windows.Forms.Label();
 			staticTextBoardSize = new System.Windows.Forms.Label();
 			staticTextPopSize = new System.Windows.Forms.Label();
@@ -77,8 +79,9 @@
 			staticTextGen = new System.Windows.Forms.Label();
 			staticTextBest = new System.Windows.Forms.Label();
 			staticTextSpeed = new System.Windows.Forms.Label();
+			staticTextMChanceRev = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.mDistanceSelector)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.mChanceMoveSelector)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.mChanceShiftSelector)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.mChanceSwapSelector)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.crossoverSelector)).BeginInit();
 			this.groupBoxMutation.SuspendLayout();
@@ -89,6 +92,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.boardSizeSelector)).BeginInit();
 			this.groupBoxCosts.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.speedSelector)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.mChanceRevSelector)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// staticTextMDistance
@@ -109,14 +113,14 @@
 			staticTextMChanceSwap.TabIndex = 6;
 			staticTextMChanceSwap.Text = "Swap Chance (%)";
 			// 
-			// staticTextMChanceMove
+			// staticTextMChanceShift
 			// 
-			staticTextMChanceMove.AutoSize = true;
-			staticTextMChanceMove.Location = new System.Drawing.Point(20, 90);
-			staticTextMChanceMove.Name = "staticTextMChanceMove";
-			staticTextMChanceMove.Size = new System.Drawing.Size(91, 13);
-			staticTextMChanceMove.TabIndex = 4;
-			staticTextMChanceMove.Text = "Move Chance (%)";
+			staticTextMChanceShift.AutoSize = true;
+			staticTextMChanceShift.Location = new System.Drawing.Point(20, 90);
+			staticTextMChanceShift.Name = "staticTextMChanceShift";
+			staticTextMChanceShift.Size = new System.Drawing.Size(85, 13);
+			staticTextMChanceShift.TabIndex = 4;
+			staticTextMChanceShift.Text = "Shift Chance (%)";
 			// 
 			// staticTextCrossover
 			// 
@@ -256,19 +260,19 @@
             0});
 			this.mDistanceSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
 			// 
-			// mChanceMoveSelector
+			// mChanceShiftSelector
 			// 
-			this.mChanceMoveSelector.DecimalPlaces = 2;
-			this.mChanceMoveSelector.Location = new System.Drawing.Point(149, 90);
-			this.mChanceMoveSelector.Name = "mChanceMoveSelector";
-			this.mChanceMoveSelector.Size = new System.Drawing.Size(120, 20);
-			this.mChanceMoveSelector.TabIndex = 5;
-			this.mChanceMoveSelector.Value = new decimal(new int[] {
+			this.mChanceShiftSelector.DecimalPlaces = 2;
+			this.mChanceShiftSelector.Location = new System.Drawing.Point(149, 90);
+			this.mChanceShiftSelector.Name = "mChanceShiftSelector";
+			this.mChanceShiftSelector.Size = new System.Drawing.Size(120, 20);
+			this.mChanceShiftSelector.TabIndex = 5;
+			this.mChanceShiftSelector.Value = new decimal(new int[] {
             5,
             0,
             0,
             0});
-			this.mChanceMoveSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
+			this.mChanceShiftSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// mChanceSwapSelector
 			// 
@@ -333,17 +337,19 @@
 			// 
 			// groupBoxMutation
 			// 
-			this.groupBoxMutation.Controls.Add(this.mChanceMoveSelector);
+			this.groupBoxMutation.Controls.Add(this.mChanceRevSelector);
+			this.groupBoxMutation.Controls.Add(staticTextMChanceRev);
+			this.groupBoxMutation.Controls.Add(this.mChanceShiftSelector);
 			this.groupBoxMutation.Controls.Add(staticTextCrossover);
 			this.groupBoxMutation.Controls.Add(this.mDistanceSelector);
 			this.groupBoxMutation.Controls.Add(this.crossoverSelector);
 			this.groupBoxMutation.Controls.Add(staticTextMDistance);
 			this.groupBoxMutation.Controls.Add(this.mChanceSwapSelector);
 			this.groupBoxMutation.Controls.Add(staticTextMChanceSwap);
-			this.groupBoxMutation.Controls.Add(staticTextMChanceMove);
+			this.groupBoxMutation.Controls.Add(staticTextMChanceShift);
 			this.groupBoxMutation.Location = new System.Drawing.Point(699, 121);
 			this.groupBoxMutation.Name = "groupBoxMutation";
-			this.groupBoxMutation.Size = new System.Drawing.Size(284, 164);
+			this.groupBoxMutation.Size = new System.Drawing.Size(284, 176);
 			this.groupBoxMutation.TabIndex = 10;
 			this.groupBoxMutation.TabStop = false;
 			this.groupBoxMutation.Text = "Mutation Settings";
@@ -353,18 +359,29 @@
 			this.groupBoxSelection.Controls.Add(this.selectSteady);
 			this.groupBoxSelection.Controls.Add(this.selectRoullete);
 			this.groupBoxSelection.Controls.Add(this.selectDemo);
-			this.groupBoxSelection.Location = new System.Drawing.Point(699, 291);
+			this.groupBoxSelection.Location = new System.Drawing.Point(699, 315);
 			this.groupBoxSelection.Name = "groupBoxSelection";
 			this.groupBoxSelection.Size = new System.Drawing.Size(183, 100);
 			this.groupBoxSelection.TabIndex = 11;
 			this.groupBoxSelection.TabStop = false;
 			this.groupBoxSelection.Text = "Selection Method";
 			// 
+			// selectSteady
+			// 
+			this.selectSteady.AutoSize = true;
+			this.selectSteady.Location = new System.Drawing.Point(32, 65);
+			this.selectSteady.Name = "selectSteady";
+			this.selectSteady.Size = new System.Drawing.Size(58, 17);
+			this.selectSteady.TabIndex = 2;
+			this.selectSteady.Text = "Steady";
+			this.selectSteady.UseVisualStyleBackColor = true;
+			this.selectSteady.CheckedChanged += new System.EventHandler(this.SettingsChanged);
+			// 
 			// LoggingBox
 			// 
 			this.LoggingBox.Controls.Add(this.logEnabledConsole);
 			this.LoggingBox.Controls.Add(this.logEnabledFile);
-			this.LoggingBox.Location = new System.Drawing.Point(699, 397);
+			this.LoggingBox.Location = new System.Drawing.Point(699, 421);
 			this.LoggingBox.Name = "LoggingBox";
 			this.LoggingBox.Size = new System.Drawing.Size(200, 58);
 			this.LoggingBox.TabIndex = 12;
@@ -511,17 +528,6 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// selectSteady
-			// 
-			this.selectSteady.AutoSize = true;
-			this.selectSteady.Location = new System.Drawing.Point(32, 65);
-			this.selectSteady.Name = "selectSteady";
-			this.selectSteady.Size = new System.Drawing.Size(58, 17);
-			this.selectSteady.TabIndex = 2;
-			this.selectSteady.Text = "Steady";
-			this.selectSteady.UseVisualStyleBackColor = true;
-			this.selectSteady.CheckedChanged += new System.EventHandler(this.SettingsChanged);
-			// 
 			// chessBoard
 			// 
 			this.chessBoard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -530,6 +536,29 @@
 			this.chessBoard.Name = "chessBoard";
 			this.chessBoard.Size = new System.Drawing.Size(480, 480);
 			this.chessBoard.TabIndex = 4;
+			// 
+			// mChanceRevSelector
+			// 
+			this.mChanceRevSelector.DecimalPlaces = 2;
+			this.mChanceRevSelector.Location = new System.Drawing.Point(149, 148);
+			this.mChanceRevSelector.Name = "mChanceRevSelector";
+			this.mChanceRevSelector.Size = new System.Drawing.Size(120, 20);
+			this.mChanceRevSelector.TabIndex = 9;
+			this.mChanceRevSelector.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+			this.mChanceRevSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
+			// 
+			// staticTextMChanceRev
+			// 
+			staticTextMChanceRev.AutoSize = true;
+			staticTextMChanceRev.Location = new System.Drawing.Point(20, 148);
+			staticTextMChanceRev.Name = "staticTextMChanceRev";
+			staticTextMChanceRev.Size = new System.Drawing.Size(104, 13);
+			staticTextMChanceRev.TabIndex = 8;
+			staticTextMChanceRev.Text = "Reverse Chance (%)";
 			// 
 			// UI
 			// 
@@ -553,7 +582,7 @@
 			this.Name = "UI";
 			this.Text = "N-Queens GA Solver";
 			((System.ComponentModel.ISupportInitialize)(this.mDistanceSelector)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.mChanceMoveSelector)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.mChanceShiftSelector)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.mChanceSwapSelector)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.crossoverSelector)).EndInit();
 			this.groupBoxMutation.ResumeLayout(false);
@@ -569,6 +598,7 @@
 			this.groupBoxCosts.ResumeLayout(false);
 			this.groupBoxCosts.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.speedSelector)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.mChanceRevSelector)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -580,7 +610,7 @@
 		private System.Windows.Forms.CheckBox logEnabledFile;
 		private System.Windows.Forms.Button buttonStart;
 		private System.Windows.Forms.NumericUpDown mDistanceSelector;
-		private System.Windows.Forms.NumericUpDown mChanceMoveSelector;
+		private System.Windows.Forms.NumericUpDown mChanceShiftSelector;
 		private System.Windows.Forms.NumericUpDown mChanceSwapSelector;
 		private System.Windows.Forms.RadioButton selectRoullete;
 		private System.Windows.Forms.RadioButton selectDemo;
@@ -601,5 +631,6 @@
 		private System.Windows.Forms.TrackBar speedSelector;
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.RadioButton selectSteady;
+		private System.Windows.Forms.NumericUpDown mChanceRevSelector;
 	}
 }

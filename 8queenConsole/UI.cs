@@ -32,12 +32,13 @@ namespace _8queen
 			return new Tuple<int, int>(popSize, boardSize);
 		}
 
-		public Tuple<int, int, double, double> GetMutationSettings() {
+		public Tuple<int, int, double, double, double> GetMutationSettings() {
 			int cross = (int) crossoverSelector.Value;
 			int distance = (int) mDistanceSelector.Value;
-			double mvChance = (double)mChanceMoveSelector.Value;
+			double mvChance = (double)mChanceShiftSelector.Value;
 			double swpChance = (double)mChanceSwapSelector.Value;
-			return new Tuple<int, int, double, double>(cross, distance, mvChance, swpChance);
+			double revChance = (double)mChanceRevSelector.Value;
+			return new Tuple<int, int, double, double, double>(cross, distance, mvChance, swpChance, revChance);
 		}
 
 		internal Tuple<bool, bool> GetLogSettings() {

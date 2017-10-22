@@ -1,2 +1,8 @@
-﻿ 3.  Add Referances/Citations
+﻿represntation:
+	arrangment generation
+	cross over
+	mutation -swap is fine, move -> shift 
+
+
+3.  Add Referances/Citations
  4.  Better Cost function???

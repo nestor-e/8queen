@@ -16,7 +16,13 @@ namespace _8queen.Model
 			this.Size = size;
 			rowPositions = new int[Size];
 			for (int i = 0; i < Size; i++) {
-				rowPositions[i] = Program.rng.Next() % Size;
+				rowPositions[i] = i;
+			}
+			for (int i = 0; i < Size - 1; i++) {
+				int k = i + (Program.rng.Next() % (Size - i - 1)); //  Pick an element from i to size - 1
+				int temp = rowPositions[k];
+				rowPositions[k] = rowPositions[i];
+				rowPositions[i] = temp;
 			}
 		}
 
@@ -27,21 +33,72 @@ namespace _8queen.Model
 				Environment.Exit(1);
 			}
 			rowPositions = new int[Size];
+			List<int> duplicateRows = new List<int>();
+			bool[] used = new bool[Size];
 			for (int i = 0; i < Size; i++) {
-				rowPositions[i] = (mask[i]) ? p1.rowPositions[i] : p2.rowPositions[i];
+				used[i] = false;
 			}
+			for (int i = 0; i < Size; i++) {
+				int col = (mask[i]) ? p1.rowPositions[i] : p2.rowPositions[i];
+				if (used[col]) {
+					duplicateRows.Add(i);
+				} else {
+					used[col] = true;
+					rowPositions[i] = col;
+				}
+			}
+			for (int i = 0; i < Size; i++) {
+				if (!used[i]) {
+					int k = Program.rng.Next() % duplicateRows.Count;
+					rowPositions[duplicateRows[k]] = i;
+					duplicateRows.RemoveAt(k); 
+				}
+			}
+
+
+		}
+
+		private int positiveModulusSize(int n) {
+			int t = n % Size;
+			return (t < 0) ? (t + Size) : (t);
 		}
 
 		//  Basic opperations on chromosomes 
-		public void Move(int row, int offset) {
-			rowPositions[row] = (rowPositions[row] + offset) % Size;
+		public void Shift(int offset) {
+			int[] temp = new int[Size];
+			for (int i = 0 ; i < Size; i++) {
+				int oIdx = positiveModulusSize(i + offset);
+				temp[i] = rowPositions[oIdx];
+			 }
+			rowPositions = temp;
 			_cost = -1;
 		}
 
 		public void RowSwap(int r1, int r2) {
+			r1 = positiveModulusSize(r1);
+			r2 = positiveModulusSize(r2);
 			int temp = rowPositions[r1];
 			rowPositions[r1] = rowPositions[r2];
 			rowPositions[r2] = temp;
+			_cost = -1;
+		}
+
+		public void Reverse(int r1, int r2) {
+			r1 = positiveModulusSize(r1);
+			r2 = positiveModulusSize(r2);			
+			if (r1 > r2) {
+				int temp = r2;
+				r2 = r1;
+				r1 = temp;
+			}
+
+			int dist = (r2 - r1) / 2;
+
+			for (int i = 0; i <= dist; i++) {
+				int temp = rowPositions[r1 + i];
+				rowPositions[r1 + i] = rowPositions[r2 - i];
+				rowPositions[r2 - i] = temp;
+			}
 			_cost = -1;
 		}
 

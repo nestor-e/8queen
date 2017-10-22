@@ -54,9 +54,9 @@ namespace _8queen.Model
 				logToFile = targetToFile;
 				midRun = true;
 				string type = sf.GetTypeName();
-				object[] mValues = { go.PerGeneMoveChance, go.PerGeneSwapChance, go.MaxMutationDistance, go.CrossCount };
+				object[] mValues = { go.ChromaShiftChance, go.PerGeneSwapChance, go.PerGeneRevChance, go.MaxMutationDistance, go.CrossCount };
 				string s1 = String.Format("Starting puzzle of size {0} using {1} and {2} individuals per generation", boardSize, type, popSize);
-				string s2 = String.Format("{3} Crossovers, Mutation Chances : move - {0:P1} , swap - {1:P1} ; {2} max distance", mValues);
+				string s2 = String.Format("{4} Crossovers, Mutation Chances : shift - {0:P1} , swap - {1:P1} , reverse - {2:P1}; {3} max distance", mValues);
 				logLine(s1);
 				logLine(s2);
 			}

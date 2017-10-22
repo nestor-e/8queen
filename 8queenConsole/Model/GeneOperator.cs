@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace _8queen.Model
 {
 	class GeneOperator{	
-		public double PerGeneMoveChance { get; private set; } = 0.05;
+		public double ChromaShiftChance { get; private set; } = 0.05;
 		public double PerGeneSwapChance { get; private set; } = 0.05;
+		public double PerGeneRevChance { get; private set; } = 0.05;
 		public int MaxMutationDistance { get; private set; } = 4;
 		public int CrossCount { get; private set; } = 1;
 
@@ -58,22 +59,40 @@ namespace _8queen.Model
 		
 		public void DoMutation(Arrangement a) {
 			for (int i = 0; i < a.Size; i++) {
-				double roll = Program.rng.NextDouble();
-				if (roll < PerGeneMoveChance)
+				double rollSwap = Program.rng.NextDouble();
+				double rollRev = Program.rng.NextDouble();
+				if (rollSwap < PerGeneSwapChance)
 				{
-					a.Move(i, getMutationDistance());
+					if (Program.rng.NextDouble() > 0.5) {
+						a.RowSwap(i, i + getMutationDistance());
+					} else {
+						a.RowSwap(i, i - getMutationDistance());
+					}
 				}
-				else if (roll - PerGeneMoveChance < PerGeneSwapChance) {
-					a.RowSwap(i, (i + getMutationDistance()) % a.Size);
+				if (rollRev < PerGeneSwapChance) {
+					if (Program.rng.NextDouble() > 0.5) {
+						a.Reverse(i, i + getMutationDistance());
+					} else {
+						a.Reverse(i, i - getMutationDistance());
+					}
+				}
+			}
+			double rollShift = Program.rng.NextDouble();
+			if (rollShift < ChromaShiftChance) {
+				if (Program.rng.NextDouble() > 0.5) {
+					a.Shift(getMutationDistance());
+				} else {
+					a.Shift(-getMutationDistance());
 				}
 			}
 		}
 
-		public void ChangeSettings(Tuple<int, int, double, double> settings) {  // cross, distance, mvChance, swpChance
+		public void ChangeSettings(Tuple<int, int, double, double, double> settings) {  // cross, distance, mvChance, swpChance
 			CrossCount = Math.Max(1, settings.Item1);
 			MaxMutationDistance = Math.Max(1, settings.Item2);
-			PerGeneMoveChance = Math.Min(1.0, Math.Max(0.0 , settings.Item3));
+			ChromaShiftChance = Math.Min(1.0, Math.Max(0.0 , settings.Item3));
 			PerGeneSwapChance = Math.Min(1.0, Math.Max(0.0, settings.Item4));
+			PerGeneRevChance = Math.Min(1.0, Math.Max(0.0, settings.Item5));
 		}
 	}
 }
