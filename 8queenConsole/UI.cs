@@ -18,7 +18,7 @@ namespace _8queen
 		internal UI(Solver s){
 			InitializeComponent();
 			solver = s;
-			ValidateRanges();
+			ValidateMutationRanges();
 			textCostAvg.Text = "";
 			textCostMin.Text = "";
 			textCostMax.Text = "";
@@ -88,13 +88,13 @@ namespace _8queen
 
 
 
-		private void ValidateRanges() {
+		private void ValidateMutationRanges() {
 			int newSize = (int)boardSizeSelector.Value;
 
 			crossoverSelector.Value = Math.Min(crossoverSelector.Value, newSize - 1);
 			crossoverSelector.Maximum = newSize - 1;
 
-			mDistanceSelector.Value = Math.Min(crossoverSelector.Value, newSize);
+			mDistanceSelector.Value = Math.Min(mDistanceSelector.Value, newSize);
 			mDistanceSelector.Maximum = newSize;
 		}
 
@@ -108,7 +108,7 @@ namespace _8queen
 		}
 
 		private void GenomeSizeChanged(object sender, EventArgs e) {
-			ValidateRanges();
+			ValidateMutationRanges();
 		}
 
 		private void buttonCancel_Click(object sender, EventArgs e) {

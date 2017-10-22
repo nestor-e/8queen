@@ -62,8 +62,8 @@
 			this.textGenNum = new System.Windows.Forms.Label();
 			this.textGenBest = new System.Windows.Forms.Label();
 			this.speedSelector = new System.Windows.Forms.TrackBar();
-			this.chessBoard = new _8queen.ChessBoard();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.chessBoard = new _8queen.ChessBoard();
 			staticTextMDistance = new System.Windows.Forms.Label();
 			staticTextMChanceSwap = new System.Windows.Forms.Label();
 			staticTextMChanceMove = new System.Windows.Forms.Label();
@@ -315,6 +315,11 @@
             0,
             0,
             0});
+			this.crossoverSelector.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
 			this.crossoverSelector.Name = "crossoverSelector";
 			this.crossoverSelector.Size = new System.Drawing.Size(120, 20);
 			this.crossoverSelector.TabIndex = 1;
@@ -408,7 +413,7 @@
 			// 
 			this.boardSizeSelector.Location = new System.Drawing.Point(147, 32);
 			this.boardSizeSelector.Minimum = new decimal(new int[] {
-            1,
+            4,
             0,
             0,
             0});
@@ -490,16 +495,8 @@
 			this.speedSelector.Name = "speedSelector";
 			this.speedSelector.Size = new System.Drawing.Size(129, 45);
 			this.speedSelector.TabIndex = 8;
+			this.speedSelector.Value = 7;
 			this.speedSelector.ValueChanged += new System.EventHandler(this.speedSelector_ValueChanged);
-			// 
-			// chessBoard
-			// 
-			this.chessBoard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.chessBoard.Location = new System.Drawing.Point(12, 36);
-			this.chessBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.chessBoard.Name = "chessBoard";
-			this.chessBoard.Size = new System.Drawing.Size(480, 480);
-			this.chessBoard.TabIndex = 4;
 			// 
 			// buttonCancel
 			// 
@@ -511,6 +508,15 @@
 			this.buttonCancel.Text = "Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
+			// chessBoard
+			// 
+			this.chessBoard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.chessBoard.Location = new System.Drawing.Point(12, 36);
+			this.chessBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.chessBoard.Name = "chessBoard";
+			this.chessBoard.Size = new System.Drawing.Size(480, 480);
+			this.chessBoard.TabIndex = 4;
 			// 
 			// UI
 			// 
@@ -532,7 +538,7 @@
 			this.Controls.Add(this.buttonStart);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "UI";
-			this.Text = "UI";
+			this.Text = "N-Queens GA Solver";
 			((System.ComponentModel.ISupportInitialize)(this.mDistanceSelector)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.mChanceMoveSelector)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.mChanceSwapSelector)).EndInit();

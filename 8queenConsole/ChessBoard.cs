@@ -22,10 +22,9 @@ namespace _8queen
 		private void DrawChessBoard(object sender, PaintEventArgs e) {
 			Graphics g = e.Graphics;
 			Brush black = new SolidBrush(Color.Black);
-			Brush white = new SolidBrush(Color.White);
 			Brush red = new SolidBrush(Color.Red);
 			RectangleF bg = new RectangleF(0, 0, Width, Height);
-			g.FillRectangle(white, bg);
+			g.Clear(Color.White);
 			float spaceSize = bg.Width / n;
 			Font f = new Font(FontFamily.GenericMonospace, (float)0.8 * spaceSize);
 			StringFormat center = new StringFormat();
@@ -34,7 +33,7 @@ namespace _8queen
 			RectangleF r;
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
-					r = new RectangleF(i * spaceSize, j * spaceSize, spaceSize, spaceSize);
+					r = new RectangleF( j * spaceSize, i * spaceSize, spaceSize, spaceSize);
 					if ((i + j) % 2 == 1) {
 						g.FillRectangle(black, r);
 					}
@@ -44,7 +43,6 @@ namespace _8queen
 				}
 			}
 			black.Dispose();
-			white.Dispose();
 			red.Dispose();
 		}
 
@@ -55,7 +53,7 @@ namespace _8queen
 			String[] posStrings = positionString.Split(delim);
 			int[] positions = new int[posStrings.Length];
 			try {
-				for (int i = 1; i < posStrings.Length; i++) {
+				for (int i = 0; i < posStrings.Length; i++) {
 					positions[i] = Int32.Parse(posStrings[i].Trim());
 				}
 			} catch (Exception ex) {
