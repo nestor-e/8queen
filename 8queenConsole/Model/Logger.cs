@@ -17,7 +17,7 @@ namespace _8queen.Model
 		private bool targetToFile = false;
 
 		public Logger() {
-			filePath = String.Format("../../Logs/log{0:mm-dd-hh-mm}.txt", DateTime.Now);
+			filePath = String.Format("log{0:MM-dd-HH-mm}.txt", DateTime.Now);
 		}
 		
 		public void Close() {
@@ -64,6 +64,8 @@ namespace _8queen.Model
 
 		public void LogRunEnd() {
 			logLine("Run concluded \n\n");
+			logLine("");
+			logLine("");
 			midRun = false;
 		}
 
