@@ -37,12 +37,12 @@ namespace _8queen.Model
 				Tuple<Arrangement, Arrangement> children = geneOp.DoCrossover(parents.Item1, parents.Item2);
 				geneOp.DoMutation(children.Item1);
 				newPop.pool.Add(children.Item1);
-				if( newPop.pool.Count < popSize){
+				if (newPop.pool.Count < popSize) {
 					geneOp.DoMutation(children.Item2);
 					newPop.pool.Add(children.Item2);
-					newPop.pool.Sort(Arrangement.compareCosts);
 				}
 			}
+			newPop.pool.Sort(Arrangement.compareCosts);
 
 			return newPop;
 		}
@@ -55,7 +55,7 @@ namespace _8queen.Model
 			foreach (Arrangement a in pool) {
 				total += a.Cost();
 			}
-			return ((double)total) / popSize;
+			return ((double)total) / pool.Count;
 		}
 	}
 }

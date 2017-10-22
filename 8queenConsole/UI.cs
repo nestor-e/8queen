@@ -47,10 +47,12 @@ namespace _8queen
 		}
 
 		public SelectorFactory.Type GetSelectionType() {
-			if (selectRoullete.Checked){
+			if (selectRoullete.Checked) {
 				return SelectorFactory.Type.ROULETTE;
 			} else if (selectDemo.Checked) {
 				return SelectorFactory.Type.DEMO;
+			} else if (selectSteady.Checked) {
+				return SelectorFactory.Type.STEADY;
 			} else {
 				return SelectorFactory.Type.NONE;
 			}

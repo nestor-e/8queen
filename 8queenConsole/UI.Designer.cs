@@ -63,6 +63,7 @@
 			this.textGenBest = new System.Windows.Forms.Label();
 			this.speedSelector = new System.Windows.Forms.TrackBar();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.selectSteady = new System.Windows.Forms.RadioButton();
 			this.chessBoard = new _8queen.ChessBoard();
 			staticTextMDistance = new System.Windows.Forms.Label();
 			staticTextMChanceSwap = new System.Windows.Forms.Label();
@@ -287,7 +288,7 @@
 			// 
 			this.selectRoullete.AutoSize = true;
 			this.selectRoullete.Checked = true;
-			this.selectRoullete.Location = new System.Drawing.Point(31, 35);
+			this.selectRoullete.Location = new System.Drawing.Point(31, 19);
 			this.selectRoullete.Name = "selectRoullete";
 			this.selectRoullete.Size = new System.Drawing.Size(64, 17);
 			this.selectRoullete.TabIndex = 0;
@@ -299,7 +300,7 @@
 			// selectDemo
 			// 
 			this.selectDemo.AutoSize = true;
-			this.selectDemo.Location = new System.Drawing.Point(31, 63);
+			this.selectDemo.Location = new System.Drawing.Point(32, 42);
 			this.selectDemo.Name = "selectDemo";
 			this.selectDemo.Size = new System.Drawing.Size(53, 17);
 			this.selectDemo.TabIndex = 1;
@@ -349,6 +350,7 @@
 			// 
 			// groupBoxSelection
 			// 
+			this.groupBoxSelection.Controls.Add(this.selectSteady);
 			this.groupBoxSelection.Controls.Add(this.selectRoullete);
 			this.groupBoxSelection.Controls.Add(this.selectDemo);
 			this.groupBoxSelection.Location = new System.Drawing.Point(699, 291);
@@ -509,6 +511,17 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
+			// selectSteady
+			// 
+			this.selectSteady.AutoSize = true;
+			this.selectSteady.Location = new System.Drawing.Point(32, 65);
+			this.selectSteady.Name = "selectSteady";
+			this.selectSteady.Size = new System.Drawing.Size(58, 17);
+			this.selectSteady.TabIndex = 2;
+			this.selectSteady.Text = "Steady";
+			this.selectSteady.UseVisualStyleBackColor = true;
+			this.selectSteady.CheckedChanged += new System.EventHandler(this.SettingsChanged);
+			// 
 			// chessBoard
 			// 
 			this.chessBoard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -587,5 +600,6 @@
 		private System.Windows.Forms.Label textGenBest;
 		private System.Windows.Forms.TrackBar speedSelector;
 		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.RadioButton selectSteady;
 	}
 }

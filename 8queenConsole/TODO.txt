@@ -1,0 +1,2 @@
+﻿ 3.  Add Referances/Citations
+ 4.  Better Cost function???

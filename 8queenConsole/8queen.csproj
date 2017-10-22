@@ -61,6 +61,7 @@
     <Compile Include="Model\SelectorFactory.cs" />
     <Compile Include="Model\Population.cs" />
     <Compile Include="Model\Solver.cs" />
+    <Compile Include="Model\SteadySelector.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\ISelector.cs" />
@@ -84,6 +85,9 @@
     <EmbeddedResource Include="UI.resx">
       <DependentUpon>UI.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

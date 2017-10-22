@@ -8,13 +8,14 @@ namespace _8queen.Model
 {
 	public class SelectorFactory{
 
-		public enum Type { ROULETTE, DEMO, NONE }
+		public enum Type { ROULETTE, DEMO, STEADY, NONE }
 		private Type currentType = Type.ROULETTE;
 
 		public String GetTypeName() {
 			switch (currentType) {
 				case Type.ROULETTE: return "Roulette Selector";
 				case Type.DEMO: return "Demo Selector";
+				case Type.STEADY: return "Steady State Selector";
 				default: return "None (Default: Roulette)";
 			}
 		}
@@ -24,6 +25,9 @@ namespace _8queen.Model
 			switch (currentType) {
 				case Type.DEMO:
 					sel = (ISelector)(new DemoSelector(data));
+					break;
+				case Type.STEADY:
+					sel = (ISelector)(new SteadySelector(data));
 					break;
 				case Type.ROULETTE:
 				case Type.NONE:  // Default type is Roullette

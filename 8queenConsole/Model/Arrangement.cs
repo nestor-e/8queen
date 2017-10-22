@@ -72,7 +72,7 @@ namespace _8queen.Model
 						}
 					}
 				}
-				_cost = totalCost;
+				_cost = totalCost/2;
 			}
 			return _cost;
 		}
