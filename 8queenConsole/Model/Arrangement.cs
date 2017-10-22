@@ -12,8 +12,8 @@ namespace _8queen.Model
 		public int Size { get; private set; }
 		private int _cost = -1;
 		
-		public Arrangement() {
-			this.Size = Program.BoardSize;
+		public Arrangement(int size) {
+			this.Size = size;
 			rowPositions = new int[Size];
 			for (int i = 0; i < Size; i++) {
 				rowPositions[i] = Program.rng.Next() % Size;
@@ -21,8 +21,8 @@ namespace _8queen.Model
 		}
 
 		public Arrangement(Arrangement p1, Arrangement p2, bool[] mask) {
-			this.Size = Program.BoardSize;
-			if (p1.Size != Size || p2.Size != Size || mask.Length != Size) {
+			this.Size = p1.Size;
+			if (p2.Size != Size || mask.Length != Size) {
 				Console.WriteLine("Size Error");
 				Environment.Exit(1);
 			}
@@ -100,8 +100,7 @@ namespace _8queen.Model
 				sb.Append(" , ");
 				sb.Append(rowPositions[i]);
 			}
-			sb.Append("}: ");
-			sb.Append(Cost());
+			sb.Append("}");
 			return sb.ToString();
 		}
 	}

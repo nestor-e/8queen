@@ -12,6 +12,9 @@ namespace _8queen.Model
 		private StreamWriter fileOut = null;
 		private bool logToConsole = true;
 		private bool logToFile = false;
+		private bool midRun = false;
+		private bool targetToConsole = true;
+		private bool targetToFile = false;
 
 		public Logger() {
 			filePath = String.Format("../../Logs/log{0:mm-dd-hh-mm}.txt", DateTime.Now);
@@ -40,23 +43,36 @@ namespace _8queen.Model
 			}
 		}
 
-
-		public void LogRunStart(int popSize, SelectorFactory sf, GeneOperator go) {
-			int size = Program.BoardSize;
-			string type = sf.GetTypeName();
-			object[] mValues = { go.PerGeneMoveChance, go.PerGeneSwapChance, go.MaxMutationDistance, go.CrossCount };
-			string s1 = String.Format("Starting puzzle of size {0} using {1} and {2} individuals per generation", size, type, popSize);
-			string s2 = String.Format("{3} Crossovers, Mutation Chances : move - {0:P1} , swap - {1:P1} ; {2} max distance", mValues);
-			logLine(s1);
-			logLine(s2);
+		internal void ChangeSettings(Tuple<bool,bool> settings) {
+			targetToConsole = settings.Item1;
+			targetToFile = settings.Item2;
 		}
 
-		public void LogRunEnd() { }
+		public void LogRunStart(int popSize, int boardSize, SelectorFactory sf, GeneOperator go) {
+			if (!midRun) {
+				logToConsole = targetToConsole;
+				logToFile = targetToFile;
+				midRun = true;
+				string type = sf.GetTypeName();
+				object[] mValues = { go.PerGeneMoveChance, go.PerGeneSwapChance, go.MaxMutationDistance, go.CrossCount };
+				string s1 = String.Format("Starting puzzle of size {0} using {1} and {2} individuals per generation", boardSize, type, popSize);
+				string s2 = String.Format("{3} Crossovers, Mutation Chances : move - {0:P1} , swap - {1:P1} ; {2} max distance", mValues);
+				logLine(s1);
+				logLine(s2);
+			}
+		}
+
+		public void LogRunEnd() {
+			logLine("Run concluded \n\n");
+			midRun = false;
+		}
 
 		public void LogGeneration(Population p, int genNum){
-			object[] values = { genNum, p.GetBest().Cost(), p.GetAvg(), p.GetWorst().Cost() };
-			String output = String.Format("\tGen #{0}: Best - {1} , Avg - {2:F2} , Worst - {3}", values);
-			logLine(output);
+			if (midRun) {
+				object[] values = { genNum, p.GetBest().Cost(), p.GetAvg(), p.GetWorst().Cost() };
+				String output = String.Format("\tGen #{0}: Best - {1} , Avg - {2:F2} , Worst - {3}", values);
+				logLine(output);
+			}
 		}
 	}
 }

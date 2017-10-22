@@ -15,16 +15,16 @@ namespace _8queen
 		private readonly int[] sleepTimes = { 5000,2500, 1500 ,1000, 800, 500, 300, 200, 100, 0 };
 		private Solver solver;
 
-		public UI(){
+		internal UI(Solver s){
 			InitializeComponent();
+			solver = s;
+			ValidateRanges();
+			textCostAvg.Text = "";
+			textCostMin.Text = "";
+			textCostMax.Text = "";
+			textGenNum.Text  = "";
+			textGenBest.Text = "";
 		}
-
-		internal void InitSolver(Solver s) {
-			//s.InitLabels();
-			//s.InitBoard();
-		}
-
-		private void PushSettings() { }
 				
 		public Tuple<int, int> GetPopSettings() {
 			int popSize = (int) popSizeSelector.Value;
@@ -40,6 +40,12 @@ namespace _8queen
 			return new Tuple<int, int, double, double>(cross, distance, mvChance, swpChance);
 		}
 
+		internal Tuple<bool, bool> GetLogSettings() {
+			bool useConsole = logEnabledConsole.Checked;
+			bool useFile = logEnabledFile.Checked;
+			return new Tuple<bool, bool>(useConsole, useFile); 
+		}
+
 		public SelectorFactory.Type GetSelectionType() {
 			if (selectRoullete.Checked){
 				return SelectorFactory.Type.ROULETTE;
@@ -49,12 +55,29 @@ namespace _8queen
 				return SelectorFactory.Type.NONE;
 			}
 		}
-
 		
-		private void DisableFixedWhileRunningComponents() { 
-			
+		public void UpdateOutputs(int gen, string bestSol, int bestScore, double avgScore, int worstScore) {
+			chessBoard.SetState(bestSol);
+			textGenNum.Text = String.Format("{0}", gen);
+			textGenBest.Text = bestSol;
+			textCostMin.Text = String.Format("{0}", bestScore);
+			textCostAvg.Text = String.Format("{0:F2}", avgScore);
+			textCostMax.Text = String.Format("{0}", worstScore);
+		}		
+
+
+		private void DisableFixedWhileRunningComponents() {
+			buttonStart.Enabled = false;
+			groupBoxPop.Enabled = false;
+			buttonCancel.Enabled = true;
 		}
-		private void EnableFixedWhileRunningComponents() { }
+		
+		private void EnableFixedWhileRunningComponents() {
+			buttonStart.Enabled = true;
+			groupBoxPop.Enabled = true;
+			buttonCancel.Enabled = false;
+
+		}
 
 		private void speedSelector_ValueChanged(object sender, EventArgs e) {
 			if (solver != null) {
@@ -63,14 +86,39 @@ namespace _8queen
 			}
 		}
 
-		private void buttonStart_Click(object sender, EventArgs e) {
-			PushSettings();
-			DisableFixedWhileRunningComponents();
-			solver.Solve();
+
+
+		private void ValidateRanges() {
+			int newSize = (int)boardSizeSelector.Value;
+
+			crossoverSelector.Value = Math.Min(crossoverSelector.Value, newSize - 1);
+			crossoverSelector.Maximum = newSize - 1;
+
+			mDistanceSelector.Value = Math.Min(crossoverSelector.Value, newSize);
+			mDistanceSelector.Maximum = newSize;
 		}
+
 
 		public void RunComplete() {
 			EnableFixedWhileRunningComponents();
+		}
+
+		private void SettingsChanged(object sender, EventArgs e) {
+			solver.PullSettings();
+		}
+
+		private void GenomeSizeChanged(object sender, EventArgs e) {
+			ValidateRanges();
+		}
+
+		private void buttonCancel_Click(object sender, EventArgs e) {
+			solver.RequestCancel();
+		}
+
+		private void buttonStart_Click(object sender, EventArgs e) {
+			DisableFixedWhileRunningComponents();
+			speedSelector_ValueChanged(sender, e);
+			solver.StartSolve(GetPopSettings());
 		}
 	}
 }

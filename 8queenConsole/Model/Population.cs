@@ -9,17 +9,19 @@ namespace _8queen.Model
 	class Population
 	{
 		readonly int popSize;
+		private readonly int boardSize;
 		private List<Arrangement> pool;
 
-		private Population(int n) {
+		private Population(int n, int s) {
 			popSize = n;
+			boardSize = s;
 			pool = new List<Arrangement>(n);
 		}
 
-		public static Population GenerateRandom(int size) {
-			Population p = new Population(size);
-			for (int i = 0; i < size; i++) {
-				p.pool.Add(new Arrangement());
+		public static Population GenerateRandom(int popSize, int boardSize) {
+			Population p = new Population(popSize, boardSize);
+			for (int i = 0; i < popSize; i++) {
+				p.pool.Add(new Arrangement(boardSize));
 			}
 			p.pool.Sort(Arrangement.compareCosts);
 			return p;
@@ -27,7 +29,7 @@ namespace _8queen.Model
 
 		public Population Reproduce(SelectorFactory sf, GeneOperator geneOp) {
 			ISelector sel = sf.GetSelector(pool);
-			Population newPop = new Population(popSize);
+			Population newPop = new Population(popSize, boardSize);
 			List<Arrangement> survirors = sel.GetCarryOver();
 			newPop.pool.AddRange(survirors);
 			while (newPop.pool.Count < popSize) {

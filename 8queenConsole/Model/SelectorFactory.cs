@@ -15,21 +15,26 @@ namespace _8queen.Model
 			switch (currentType) {
 				case Type.ROULETTE: return "Roulette Selector";
 				case Type.DEMO: return "Demo Selector";
-				default: return "None";
+				default: return "None (Default: Roulette)";
 			}
 		}
 
 		internal ISelector GetSelector(List<Arrangement> data) {
 			ISelector sel = null;
 			switch (currentType) {
-				case Type.ROULETTE:
-					sel = (ISelector) (new RouletteSelector(data));
-					break;
 				case Type.DEMO:
 					sel = (ISelector)(new DemoSelector(data));
 					break;
+				case Type.ROULETTE:
+				case Type.NONE:  // Default type is Roullette
+					sel = (ISelector)(new RouletteSelector(data));
+					break;
 			}
 			return sel;
+		}
+
+		internal void ChangeSettings(Type type) {
+			currentType = type;
 		}
 	}
 }

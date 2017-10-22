@@ -12,30 +12,22 @@ namespace _8queen
 	class Program
 	{
 		public static Random rng;
-		public static int BoardSize { get; private set; } =  8;
 		
 		[STAThread]
 		static void Main(string[] args)
 		{
-			rng = new Random();
-			Logger output = new Logger();
-			Solver sol = new Solver();
-			Population p = Population.GenerateRandom(200);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new _8queen.UI());
-			int i = 1;
-			output.LogRunStart(200);
-			while (p.GetBest().Cost() > 0) {
-				output.LogGeneration(p, i);
-				p = p.Reproduce();
-				i++;
-				//Thread.Sleep(100);
-			}
-			output.LogGeneration(p, i);
-			output.LogRunEnd();
-			output.Close();
-			Console.In.ReadLine();
+
+			rng = new Random();
+			Logger log = new Logger();
+			Solver sol = new Solver(log);
+			UI ui = new UI(sol);
+			sol.Init(ui);
+
+			Application.Run(ui);
+			
+			log.Close();
 		}
 	}
 }

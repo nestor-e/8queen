@@ -13,7 +13,7 @@ namespace _8queen.Model
 		public int CrossCount { get; private set; } = 1;
 
 		private int getMutationDistance() {
-			int d = (Program.rng.Next() % (MaxMutationDistance - 1)) + 1;
+			int d = (MaxMutationDistance > 1)?( (Program.rng.Next() % (MaxMutationDistance - 1)) + 1) : (1);
 			return d;
 		}
 
@@ -67,6 +67,13 @@ namespace _8queen.Model
 					a.RowSwap(i, (i + getMutationDistance()) % a.Size);
 				}
 			}
+		}
+
+		public void ChangeSettings(Tuple<int, int, double, double> settings) {  // cross, distance, mvChance, swpChance
+			CrossCount = Math.Max(1, settings.Item1);
+			MaxMutationDistance = Math.Max(1, settings.Item2);
+			PerGeneMoveChance = Math.Min(1.0, Math.Max(0.0 , settings.Item3));
+			PerGeneSwapChance = Math.Min(1.0, Math.Max(0.0, settings.Item4));
 		}
 	}
 }

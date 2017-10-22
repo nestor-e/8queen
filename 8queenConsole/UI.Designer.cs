@@ -63,6 +63,7 @@
 			this.textGenBest = new System.Windows.Forms.Label();
 			this.speedSelector = new System.Windows.Forms.TrackBar();
 			this.chessBoard = new _8queen.ChessBoard();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			staticTextMDistance = new System.Windows.Forms.Label();
 			staticTextMChanceSwap = new System.Windows.Forms.Label();
 			staticTextMChanceMove = new System.Windows.Forms.Label();
@@ -94,7 +95,7 @@
 			staticTextMDistance.AutoSize = true;
 			staticTextMDistance.Location = new System.Drawing.Point(20, 58);
 			staticTextMDistance.Name = "staticTextMDistance";
-			staticTextMDistance.Size = new System.Drawing.Size(121, 17);
+			staticTextMDistance.Size = new System.Drawing.Size(93, 13);
 			staticTextMDistance.TabIndex = 2;
 			staticTextMDistance.Text = "Mutation Distance";
 			// 
@@ -103,7 +104,7 @@
 			staticTextMChanceSwap.AutoSize = true;
 			staticTextMChanceSwap.Location = new System.Drawing.Point(20, 118);
 			staticTextMChanceSwap.Name = "staticTextMChanceSwap";
-			staticTextMChanceSwap.Size = new System.Drawing.Size(120, 17);
+			staticTextMChanceSwap.Size = new System.Drawing.Size(91, 13);
 			staticTextMChanceSwap.TabIndex = 6;
 			staticTextMChanceSwap.Text = "Swap Chance (%)";
 			// 
@@ -112,7 +113,7 @@
 			staticTextMChanceMove.AutoSize = true;
 			staticTextMChanceMove.Location = new System.Drawing.Point(20, 90);
 			staticTextMChanceMove.Name = "staticTextMChanceMove";
-			staticTextMChanceMove.Size = new System.Drawing.Size(120, 17);
+			staticTextMChanceMove.Size = new System.Drawing.Size(91, 13);
 			staticTextMChanceMove.TabIndex = 4;
 			staticTextMChanceMove.Text = "Move Chance (%)";
 			// 
@@ -121,7 +122,7 @@
 			staticTextCrossover.AutoSize = true;
 			staticTextCrossover.Location = new System.Drawing.Point(18, 30);
 			staticTextCrossover.Name = "staticTextCrossover";
-			staticTextCrossover.Size = new System.Drawing.Size(79, 17);
+			staticTextCrossover.Size = new System.Drawing.Size(59, 13);
 			staticTextCrossover.TabIndex = 0;
 			staticTextCrossover.Text = "Crossovers";
 			// 
@@ -130,7 +131,7 @@
 			staticTextBoardSize.AutoSize = true;
 			staticTextBoardSize.Location = new System.Drawing.Point(18, 32);
 			staticTextBoardSize.Name = "staticTextBoardSize";
-			staticTextBoardSize.Size = new System.Drawing.Size(77, 17);
+			staticTextBoardSize.Size = new System.Drawing.Size(58, 13);
 			staticTextBoardSize.TabIndex = 0;
 			staticTextBoardSize.Text = "Board Size";
 			// 
@@ -139,7 +140,7 @@
 			staticTextPopSize.AutoSize = true;
 			staticTextPopSize.Location = new System.Drawing.Point(18, 63);
 			staticTextPopSize.Name = "staticTextPopSize";
-			staticTextPopSize.Size = new System.Drawing.Size(106, 17);
+			staticTextPopSize.Size = new System.Drawing.Size(80, 13);
 			staticTextPopSize.TabIndex = 2;
 			staticTextPopSize.Text = "Population Size";
 			// 
@@ -148,7 +149,7 @@
 			staticTextCostMin.AutoSize = true;
 			staticTextCostMin.Location = new System.Drawing.Point(11, 24);
 			staticTextCostMin.Name = "staticTextCostMin";
-			staticTextCostMin.Size = new System.Drawing.Size(36, 17);
+			staticTextCostMin.Size = new System.Drawing.Size(28, 13);
 			staticTextCostMin.TabIndex = 0;
 			staticTextCostMin.Text = "Best";
 			// 
@@ -157,7 +158,7 @@
 			staticTextCostAvg.AutoSize = true;
 			staticTextCostAvg.Location = new System.Drawing.Point(11, 48);
 			staticTextCostAvg.Name = "staticTextCostAvg";
-			staticTextCostAvg.Size = new System.Drawing.Size(32, 17);
+			staticTextCostAvg.Size = new System.Drawing.Size(26, 13);
 			staticTextCostAvg.TabIndex = 2;
 			staticTextCostAvg.Text = "Avg";
 			// 
@@ -166,7 +167,7 @@
 			staticTextCostMax.AutoSize = true;
 			staticTextCostMax.Location = new System.Drawing.Point(11, 78);
 			staticTextCostMax.Name = "staticTextCostMax";
-			staticTextCostMax.Size = new System.Drawing.Size(45, 17);
+			staticTextCostMax.Size = new System.Drawing.Size(35, 13);
 			staticTextCostMax.TabIndex = 4;
 			staticTextCostMax.Text = "Worst";
 			// 
@@ -175,7 +176,7 @@
 			staticTextGen.AutoSize = true;
 			staticTextGen.Location = new System.Drawing.Point(13, 13);
 			staticTextGen.Name = "staticTextGen";
-			staticTextGen.Size = new System.Drawing.Size(39, 17);
+			staticTextGen.Size = new System.Drawing.Size(30, 13);
 			staticTextGen.TabIndex = 0;
 			staticTextGen.Text = "Gen:";
 			// 
@@ -184,7 +185,7 @@
 			staticTextBest.AutoSize = true;
 			staticTextBest.Location = new System.Drawing.Point(104, 13);
 			staticTextBest.Name = "staticTextBest";
-			staticTextBest.Size = new System.Drawing.Size(95, 17);
+			staticTextBest.Size = new System.Drawing.Size(72, 13);
 			staticTextBest.TabIndex = 2;
 			staticTextBest.Text = "Best Solution:";
 			// 
@@ -193,7 +194,7 @@
 			staticTextSpeed.AutoSize = true;
 			staticTextSpeed.Location = new System.Drawing.Point(521, 156);
 			staticTextSpeed.Name = "staticTextSpeed";
-			staticTextSpeed.Size = new System.Drawing.Size(122, 17);
+			staticTextSpeed.Size = new System.Drawing.Size(92, 13);
 			staticTextSpeed.TabIndex = 7;
 			staticTextSpeed.Text = "Simulation Speed:";
 			// 
@@ -204,20 +205,22 @@
 			this.logEnabledConsole.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.logEnabledConsole.Location = new System.Drawing.Point(21, 20);
 			this.logEnabledConsole.Name = "logEnabledConsole";
-			this.logEnabledConsole.Size = new System.Drawing.Size(81, 21);
+			this.logEnabledConsole.Size = new System.Drawing.Size(64, 17);
 			this.logEnabledConsole.TabIndex = 0;
 			this.logEnabledConsole.Text = "Console";
 			this.logEnabledConsole.UseVisualStyleBackColor = true;
+			this.logEnabledConsole.CheckedChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// logEnabledFile
 			// 
 			this.logEnabledFile.AutoSize = true;
 			this.logEnabledFile.Location = new System.Drawing.Point(108, 21);
 			this.logEnabledFile.Name = "logEnabledFile";
-			this.logEnabledFile.Size = new System.Drawing.Size(52, 21);
+			this.logEnabledFile.Size = new System.Drawing.Size(42, 17);
 			this.logEnabledFile.TabIndex = 1;
 			this.logEnabledFile.Text = "File";
 			this.logEnabledFile.UseVisualStyleBackColor = true;
+			this.logEnabledFile.CheckedChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// buttonStart
 			// 
@@ -243,39 +246,42 @@
             0,
             0});
 			this.mDistanceSelector.Name = "mDistanceSelector";
-			this.mDistanceSelector.Size = new System.Drawing.Size(120, 22);
+			this.mDistanceSelector.Size = new System.Drawing.Size(120, 20);
 			this.mDistanceSelector.TabIndex = 3;
 			this.mDistanceSelector.Value = new decimal(new int[] {
             4,
             0,
             0,
             0});
+			this.mDistanceSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// mChanceMoveSelector
 			// 
 			this.mChanceMoveSelector.DecimalPlaces = 2;
 			this.mChanceMoveSelector.Location = new System.Drawing.Point(149, 90);
 			this.mChanceMoveSelector.Name = "mChanceMoveSelector";
-			this.mChanceMoveSelector.Size = new System.Drawing.Size(120, 22);
+			this.mChanceMoveSelector.Size = new System.Drawing.Size(120, 20);
 			this.mChanceMoveSelector.TabIndex = 5;
 			this.mChanceMoveSelector.Value = new decimal(new int[] {
             5,
             0,
             0,
             0});
+			this.mChanceMoveSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// mChanceSwapSelector
 			// 
 			this.mChanceSwapSelector.DecimalPlaces = 2;
 			this.mChanceSwapSelector.Location = new System.Drawing.Point(149, 118);
 			this.mChanceSwapSelector.Name = "mChanceSwapSelector";
-			this.mChanceSwapSelector.Size = new System.Drawing.Size(120, 22);
+			this.mChanceSwapSelector.Size = new System.Drawing.Size(120, 20);
 			this.mChanceSwapSelector.TabIndex = 7;
 			this.mChanceSwapSelector.Value = new decimal(new int[] {
             5,
             0,
             0,
             0});
+			this.mChanceSwapSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// selectRoullete
 			// 
@@ -283,21 +289,23 @@
 			this.selectRoullete.Checked = true;
 			this.selectRoullete.Location = new System.Drawing.Point(31, 35);
 			this.selectRoullete.Name = "selectRoullete";
-			this.selectRoullete.Size = new System.Drawing.Size(81, 21);
+			this.selectRoullete.Size = new System.Drawing.Size(64, 17);
 			this.selectRoullete.TabIndex = 0;
 			this.selectRoullete.TabStop = true;
 			this.selectRoullete.Text = "Roullete";
 			this.selectRoullete.UseVisualStyleBackColor = true;
+			this.selectRoullete.CheckedChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// selectDemo
 			// 
 			this.selectDemo.AutoSize = true;
 			this.selectDemo.Location = new System.Drawing.Point(31, 63);
 			this.selectDemo.Name = "selectDemo";
-			this.selectDemo.Size = new System.Drawing.Size(66, 21);
+			this.selectDemo.Size = new System.Drawing.Size(53, 17);
 			this.selectDemo.TabIndex = 1;
 			this.selectDemo.Text = "Demo";
 			this.selectDemo.UseVisualStyleBackColor = true;
+			this.selectDemo.CheckedChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// crossoverSelector
 			// 
@@ -308,13 +316,14 @@
             0,
             0});
 			this.crossoverSelector.Name = "crossoverSelector";
-			this.crossoverSelector.Size = new System.Drawing.Size(120, 22);
+			this.crossoverSelector.Size = new System.Drawing.Size(120, 20);
 			this.crossoverSelector.TabIndex = 1;
 			this.crossoverSelector.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+			this.crossoverSelector.ValueChanged += new System.EventHandler(this.SettingsChanged);
 			// 
 			// groupBoxMutation
 			// 
@@ -387,7 +396,7 @@
             0,
             0});
 			this.popSizeSelector.Name = "popSizeSelector";
-			this.popSizeSelector.Size = new System.Drawing.Size(120, 22);
+			this.popSizeSelector.Size = new System.Drawing.Size(120, 20);
 			this.popSizeSelector.TabIndex = 3;
 			this.popSizeSelector.Value = new decimal(new int[] {
             500,
@@ -404,20 +413,21 @@
             0,
             0});
 			this.boardSizeSelector.Name = "boardSizeSelector";
-			this.boardSizeSelector.Size = new System.Drawing.Size(120, 22);
+			this.boardSizeSelector.Size = new System.Drawing.Size(120, 20);
 			this.boardSizeSelector.TabIndex = 1;
 			this.boardSizeSelector.Value = new decimal(new int[] {
             8,
             0,
             0,
             0});
+			this.boardSizeSelector.ValueChanged += new System.EventHandler(this.GenomeSizeChanged);
 			// 
 			// textCostMax
 			// 
 			this.textCostMax.AutoSize = true;
 			this.textCostMax.Location = new System.Drawing.Point(63, 78);
 			this.textCostMax.Name = "textCostMax";
-			this.textCostMax.Size = new System.Drawing.Size(54, 17);
+			this.textCostMax.Size = new System.Drawing.Size(41, 13);
 			this.textCostMax.TabIndex = 5;
 			this.textCostMax.Text = "label10";
 			// 
@@ -426,7 +436,7 @@
 			this.textCostAvg.AutoSize = true;
 			this.textCostAvg.Location = new System.Drawing.Point(63, 48);
 			this.textCostAvg.Name = "textCostAvg";
-			this.textCostAvg.Size = new System.Drawing.Size(54, 17);
+			this.textCostAvg.Size = new System.Drawing.Size(41, 13);
 			this.textCostAvg.TabIndex = 3;
 			this.textCostAvg.Text = "label11";
 			// 
@@ -435,7 +445,7 @@
 			this.textCostMin.AutoSize = true;
 			this.textCostMin.Location = new System.Drawing.Point(63, 24);
 			this.textCostMin.Name = "textCostMin";
-			this.textCostMin.Size = new System.Drawing.Size(54, 17);
+			this.textCostMin.Size = new System.Drawing.Size(41, 13);
 			this.textCostMin.TabIndex = 1;
 			this.textCostMin.Text = "label12";
 			// 
@@ -459,7 +469,7 @@
 			this.textGenNum.AutoSize = true;
 			this.textGenNum.Location = new System.Drawing.Point(48, 13);
 			this.textGenNum.Name = "textGenNum";
-			this.textGenNum.Size = new System.Drawing.Size(44, 17);
+			this.textGenNum.Size = new System.Drawing.Size(34, 13);
 			this.textGenNum.TabIndex = 1;
 			this.textGenNum.Text = "Temp";
 			// 
@@ -468,7 +478,7 @@
 			this.textGenBest.AutoSize = true;
 			this.textGenBest.Location = new System.Drawing.Point(194, 13);
 			this.textGenBest.Name = "textGenBest";
-			this.textGenBest.Size = new System.Drawing.Size(54, 17);
+			this.textGenBest.Size = new System.Drawing.Size(41, 13);
 			this.textGenBest.TabIndex = 3;
 			this.textGenBest.Text = "label16";
 			// 
@@ -478,7 +488,7 @@
 			this.speedSelector.Location = new System.Drawing.Point(524, 179);
 			this.speedSelector.Maximum = 9;
 			this.speedSelector.Name = "speedSelector";
-			this.speedSelector.Size = new System.Drawing.Size(129, 56);
+			this.speedSelector.Size = new System.Drawing.Size(129, 45);
 			this.speedSelector.TabIndex = 8;
 			this.speedSelector.ValueChanged += new System.EventHandler(this.speedSelector_ValueChanged);
 			// 
@@ -486,14 +496,27 @@
 			// 
 			this.chessBoard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.chessBoard.Location = new System.Drawing.Point(12, 36);
+			this.chessBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.chessBoard.Name = "chessBoard";
 			this.chessBoard.Size = new System.Drawing.Size(480, 480);
 			this.chessBoard.TabIndex = 4;
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Enabled = false;
+			this.buttonCancel.Location = new System.Drawing.Point(164, 522);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(146, 23);
+			this.buttonCancel.TabIndex = 13;
+			this.buttonCancel.Text = "Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// UI
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.ClientSize = new System.Drawing.Size(998, 550);
+			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(staticTextSpeed);
 			this.Controls.Add(this.speedSelector);
 			this.Controls.Add(this.textGenBest);
@@ -557,5 +580,6 @@
 		private System.Windows.Forms.Label textGenNum;
 		private System.Windows.Forms.Label textGenBest;
 		private System.Windows.Forms.TrackBar speedSelector;
+		private System.Windows.Forms.Button buttonCancel;
 	}
 }
